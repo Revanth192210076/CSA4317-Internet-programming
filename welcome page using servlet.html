@@ -5,32 +5,25 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-// Map the servlet to a URL pattern
 @WebServlet("/WelcomeServlet")
 public class WelcomeServlet extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
-    // Handle GET requests
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    // Handle POST requests
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         processRequest(request, response);
     }
 
-    // Common method to handle both GET and POST requests
     private void processRequest(HttpServletRequest request, HttpServletResponse response) throws IOException {
-        // Retrieve the 'name' parameter from the request
         String name = request.getParameter("name");
 
-        // Set the content type of the response
         response.setContentType("text/html");
 
-        // Generate the response HTML
         response.getWriter().println("<!DOCTYPE html>");
         response.getWriter().println("<html>");
         response.getWriter().println("<head>");
