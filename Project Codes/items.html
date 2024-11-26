@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SR Restaurants - Dashboard</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #fffaf0;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            text-align: center;
+        }
+
+        .dashboard-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            text-align: center;
+        }
+
+        .header {
+            margin-bottom: 40px;
+        }
+
+        .header h1 {
+            color: #e67e22;
+            font-size: 36px;
+        }
+
+        .category {
+            margin-bottom: 40px;
+        }
+
+        .category h2 {
+            color: #e67e22;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #e67e22;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .food-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            justify-content: center;
+        }
+
+        .food-item {
+            width: calc(25% - 20px);
+            background-color: #ffffff;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            text-align: center;
+            padding: 15px;
+        }
+
+        .food-item img {
+            width: 100%;
+            height: 150px;
+            object-fit: cover;
+        }
+
+        .food-item h3 {
+            color: #2c3e50;
+            font-size: 18px;
+            margin: 10px 0;
+        }
+
+        .food-item p {
+            color: #7f8c8d;
+            font-size: 14px;
+            margin: 0 10px 10px;
+        }
+
+        .food-item .price {
+            color: #e74c3c;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .food-item .quantity-controls {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+
+        .food-item .quantity-controls button {
+            background-color: #27ae60;
+            color: white;
+            padding: 5px 10px;
+            border: none;
+            border-radius: 4px;
+            font-size: 14px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .food-item .quantity-controls button:hover {
+            background-color: #2ecc71;
+        }
+
+        .food-item .quantity-controls span {
+            font-size: 16px;
+            color: #2c3e50;
+            font-weight: bold;
+        }
+
+        .order-now-button {
+            display: inline-block;
+            width: 200px;
+            background-color: #e67e22;
+            color: white;
+            padding: 10px;
+            font-size: 16px;
+            text-align: center;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            margin-top: 30px;
+        }
+
+        .order-now-button:hover {
+            background-color: #d35400;
+        }
+
+        .order-now-button:focus {
+            outline: none;
+        }
+
+        /* Responsive design for smaller screens */
+        @media (max-width: 768px) {
+            .food-item {
+                width: calc(50% - 20px);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .food-item {
+                width: 100%;
+            }
+        }
+    </style>
+    <script>
+        function updateQuantity(button, action) {
+            const quantityElement = button.parentElement.querySelector('.quantity');
+            let quantity = parseInt(quantityElement.innerText);
+
+            if (action === 'add') {
+                quantity++;
+            } else if (action === 'subtract' && quantity > 0) {
+                quantity--;
+            }
+
+            quantityElement.innerText = quantity;
+        }
+
+        function redirectToAddressPage() {
+            // Redirect to the address page (Replace 'address-page.html' with the actual page URL)
+            window.location.href = 'address.html';
+        }
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <div class="header">
+            <h1>SR Restaurant</h1>
+            <p>Forget Home and Feel SR's Taste</p>
+        </div>
+
+        <!-- Cakes -->
+        <div class="category">
+            <h2>Veg items</h2>
+            <div class="food-grid">
+                <div class="food-item">
+                    <img src="https://myfoodstory.com/wp-content/uploads/2021/07/Paneer-Butter-Masala-3.jpg">
+                    <h3>Paneer Butter Masala</h3>
+                    <p>Delicious and healthy vegetarian dish.</p>
+                    <div class="price">₹250</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="https://i1.wp.com/www.bharatzkitchen.com/wp-content/uploads/2019/03/aloo-fry-2.jpg?zoom=1.25&resize=575%2C262&ssl=1">
+                    <h3>Potato</h3>
+                    <p>A tasty vegetarian delight!</p>
+                    <div class="price">₹110</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="https://shwetainthekitchen.com/wp-content/uploads/2021/12/Dal-Fry-Recipe.jpg ">
+                    <h3>Dal</h3>
+                    <p>A fresh and flavorful vegetarian dish.</p>
+                    <div class="price">₹105</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="http://static.flickr.com/2929/13720541523_0d05962f8a_b.jpg">
+                    <h3>Ladies Finger</h3>
+                    <p>A classic vegetarian dish!</p>
+                    <div class="price">₹110</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- Desserts Section -->
+        <div class="category">
+            <h2>Desserts</h2>
+            <div class="food-grid">
+                <div class="food-item">
+                    <img src="https://www.seriouseats.com/thmb/nB-y1eoIvTxbYHfYOcUPz8YCBTE=/750x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/best-strawberry-ice-cream-recipe-hero-02_1-46a0912233a548c787f10389e86ccc5f.JPG">
+                    <h3>Strawberry Ice Cream</h3>
+                    <p>Sweet and creamy chocolate mousse.</p>
+                    <div class="price">₹150</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="https://proquipinc.com/wp-content/uploads/2022/08/chocolate-vanilla-ice-cream.jpg">
+                    <h3>venila choclate</h3>
+                    <p>Rich and flavorful cheesecake.</p>
+                    <div class="price">₹180</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRcvD7iywb41tFYrSKgvC5nF2kS-7ez6o59qQ&s">
+                    <h3>Milk Sweet</h3>
+                    <p>A smooth vanilla pudding.</p>
+                    <div class="price">₹200</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+                <div class="food-item">
+                    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTzKfCJq96hyvyFgjLHqCqAjVdL6wL2dbDT0g&s">
+                    <h3>Mango Ice Cream</h3>
+                    <p>Sweet and tangy fruit salad.</p>
+                    <div class="price">170</div>
+                    <div class="quantity-controls">
+                        <button onclick="updateQuantity(this, 'subtract')">-</button>
+                        <span class="quantity">0</span>
+                        <button onclick="updateQuantity(this, 'add')">+</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+</style>
+    <script>
+        function updateQuantity(button, action) {
+            const quantityElement = button.parentElement.querySelector('.quantity');
+            let quantity = parseInt(quantityElement.innerText);
+
+            if (action === 'add') {
+                quantity++;
+            } else if (action === 'subtract' && quantity > 0) {
+                quantity--;
+            }
+
+            quantityElement.innerText = quantity;
+            updateCartValue(); // Update the cart value whenever quantity changes
+        }
+
+        function updateCartValue() {
+            const foodItems = document.querySelectorAll('.food-item');
+            let totalCartValue = 0;
+
+            foodItems.forEach(item => {
+                const quantity = parseInt(item.querySelector('.quantity').innerText);
+                const price = parseInt(item.querySelector('.price').innerText.replace('₹', ''));
+                totalCartValue += quantity * price;
+            });
+
+            document.getElementById('cartValue').innerText = `Cart Value: ₹${totalCartValue}`;
+        }
+
+        function redirectToAddressPage() {
+            window.location.href = 'address.html';
+        }
+    </script>
+
+        <div>
+<div class="cart-value" id="cartValue">Cart Value: ₹0</div>
+            <button class="order-now-button" onclick="redirectToAddressPage()">Order Now</button>
+        </div>
+    </div>
+</body>
+</html>
